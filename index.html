@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autophagos</title>
+</head>
+<body>
+    
+    <form >
+        <h1>Ingresa la url</h1>
+        <div>
+            <input type="text" name="url" id="url"> 
+        </div>
+       <div class="browser">
+        <p>Ver el navegador</p>
+        <label>
+            <input type="checkbox" checked name="headless" id="headless">
+        </label>
+       </div>
+        <input type="submit" value="Iniciar">
+        <p></p>
+    </form>
+    <script>
+         const message = document.createElement('p');
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const url = e.target.url.value;
+            const headless = e.target.headless.checked;
+            if(url === '') {
+                message.textContent = 'Ingresa una url';
+                message.style.color = 'red';
+                message.style.position = 'absolute';
+                message.style.bottom = '30px';
+
+                form.appendChild(message);
+                return;
+            }else{
+                window.electron.start({url: url, headless: headless});
+                window.location.href = `./load.html`;
+            }
+           
+        });
+    </script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+           
+            color: black;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background-color: #C1CEF3;
+            width: fit-content;
+            height: fit-content;
+            padding: 55px;
+            margin: 50px auto;
+            border-radius: 20px;
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.507);
+            position: relative;
+        }
+        input[type="checkbox"]{
+            cursor: pointer;
+            appearance: none;
+            width: 40px;
+            height: 20px;
+            border-radius: 20px;
+            background-image: url('./Chromium_Logo.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: right;
+            transition: background-position 0.3s;
+            margin:0;
+            filter: grayscale(0);
+        }
+        input[type="checkbox"]:checked{
+            background-position: left;
+            filter: grayscale(1);
+        }
+        label:has(input[type="checkbox"]){
+            width: 40px;
+            height: 20px;
+            background-color: rgb(188, 220, 242);
+            border-radius: 20px;
+            border: 2px solid rgb(255, 255, 255);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.427);
+        }
+        label:has(input[type="checkbox"]:checked){
+            background-color: gray;
+            transition: background-color 0.3s;
+            
+        }
+        .browser{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        input[type="text"]{
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            border-bottom: 1px solid black;
+            width: 50vw;
+            
+        }
+        input[type="submit"]{
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</body>
+</html>

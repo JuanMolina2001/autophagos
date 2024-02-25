@@ -1,0 +1,19 @@
+# Dependencias
+node_modules/
+
+# Archivos de construcción y directorios
+dist/
+build/
+out/
+coverage/
+
+# Archivos de configuración
+.env
+
+# Archivos de registro
+*.log
+
+# Otras carpetas y archivos 
+autophagos-win32-x64/
+installer.exe
+

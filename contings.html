@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autophagos</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+    </div>
+</body>
+<style>
+    .data {
+        padding-block: 10px;
+        display: flex;
+        flex-direction: column;
+        background-color: #C1CEF3;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        transition: all 1s ease-in-out;
+        padding-inline: 1rem;
+
+    }
+
+    .false {
+        width: 10px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: red;
+    }
+
+    .true {
+        width: 10px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: green;
+    }
+
+    .name {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        padding-block: 10px;
+    }
+
+
+    details summary {
+        background-color: #C1CEF3;
+        padding-block: 0.5rem;
+        padding-inline: 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 400px;
+    }
+
+    details[open]:has(summary) summary {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+
+    summary span {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: #000;
+    }
+
+    /* HTML: <div class="loader"></div> */
+</style>
+<style>
+    /* HTML: <div class="loader"></div> */
+    .loader {
+        width: 10px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 5px solid;
+        border-color: #000 #0000;
+        animation: l1 1s infinite;
+    }
+
+    @keyframes l1 {
+        to {
+            transform: rotate(.5turn)
+        }
+    }
+</style>
+<script>
+    
+    function setData(contings) {
+        const list = contings.map(element => {
+            const { name, status, result } = element;
+            return ` <details>
+            <summary>
+                <div class="name">
+                    <div class="${result ? result.isPhage : 'loader'}"></div>
+                    ${name}
+                </div>
+                <span>${status}</span>
+                ${result ? `<a href="${result.url}">
+                    ${result.id}
+                    </a>` : ''}
+            </summary>
+        </details>`
+        }).join('');
+        container.innerHTML = list;
+    }
+    const contings = JSON.parse(localStorage.getItem('contings'))
+    const container = document.querySelector('.container');
+    setData(contings);
+
+    window.electron.statusContigs((response) => {
+        console.log(response);
+        const { status, id, result } = response;
+        contings[id].status = status;
+        contings[id].result = result;
+        setData(contings);
+    })
+</script>
+
+</html>
