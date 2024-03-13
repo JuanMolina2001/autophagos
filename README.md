@@ -22,7 +22,7 @@ Si prefieres utilizar el script de Puppeteer, sigue estos pasos:
 
 -Instala Puppeteer con el siguiente comando:
 
-`npm install`
+`npm i puppeteer`
 
 -Para iniciar el script utiliza
 
