@@ -6,6 +6,7 @@ dist/
 build/
 out/
 coverage/
+.vscode
 
 # Archivos de configuración
 .env
