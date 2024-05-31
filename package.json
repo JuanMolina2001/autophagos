@@ -1,19 +1,35 @@
 {
   "name": "autophagos",
+  "productName": "autophagos",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  "description": "My Electron application description",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "puppeteer": "^22.2.0"
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\""
   },
   "devDependencies": {
-    "electron": "^29.0.1"
+    "@electron-forge/cli": "^7.4.0",
+    "@electron-forge/maker-deb": "^7.4.0",
+    "@electron-forge/maker-rpm": "^7.4.0",
+    "@electron-forge/maker-squirrel": "^7.4.0",
+    "@electron-forge/maker-zip": "^7.4.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
+    "@electron-forge/plugin-fuses": "^7.4.0",
+    "@electron/fuses": "^1.8.0",
+    "electron": "30.0.9"
+  },
+  "keywords": [],
+  "author": {
+    "name": "JuanMolina2001",
+    "email": "juanmolinajm2001@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1",
+    "puppeteer": "^22.10.0"
   }
 }

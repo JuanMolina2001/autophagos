@@ -54,9 +54,6 @@ const Form = ({ setStatus, setContings }) => {
 
 
       }}>
-      <a href="https://www.ncbi.nlm.nih.gov/Traces/wgs/RHGY01?display=contigs">
-        test
-      </a>
       <div class="relative url">
         <input type="text" name="url" class="p-[0.6em_1em] outline-none shadow-[0_2px_4px_#0000001a] border-none bg-transparent w-full cursor-text" placeholder="Url" />
         <div class="highlight absolute bottom-0 left-0 w-0 h-[2px] bg-[#116399] transition-[all_0.3s_ease]"></div>
