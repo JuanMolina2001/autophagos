@@ -2,7 +2,7 @@
 node_modules/
 
 # Archivos de construcción y directorios
-dist/
+
 build/
 out/
 coverage/
