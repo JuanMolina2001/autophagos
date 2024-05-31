@@ -1,4 +1,4 @@
-const { BrowserWindow, app, Menu, ipcMain } = require('electron')
+const { BrowserWindow, app, Menu, ipcMain, shell } = require('electron')
 const path = require('path')
 const { getContigs } = require('./scraper.js')
 function createWindow() {
@@ -11,12 +11,15 @@ function createWindow() {
         },
         icon: path.join(__dirname, 'icono.png')
     })
-    win.loadFile('index.html')
-    Menu.setApplicationMenu(null)
+    win.loadFile(path.join(__dirname, 'dist','index.html'))
+    // Menu.setApplicationMenu(null)
      getContigs(win);
-   
+     ipcMain.on('open-link', (event, link) => {
+        shell.openExternal(link)
+    }
+    )
 }
-
+app.icon = path.join(__dirname, 'icono.png')
 app.whenReady().then(() => {
     createWindow()
 })
