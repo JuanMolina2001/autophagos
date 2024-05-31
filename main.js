@@ -11,7 +11,7 @@ function createWindow() {
         },
         icon: path.join(__dirname, 'icono.png')
     })
-    win.loadFile(path.join(__dirname, 'dist','index.html'))
+    win.loadFile(path.join(__dirname, 'src','index.html'))
     // Menu.setApplicationMenu(null)
      getContigs(win);
      ipcMain.on('open-link', (event, link) => {
