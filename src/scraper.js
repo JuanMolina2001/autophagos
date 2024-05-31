@@ -98,7 +98,7 @@ function getContigs(win) {
                             result: result,
                         });
                         results.push(result);
-                    }, 10000);
+                    }, 1500);
                 } catch (e) {
                     win.webContents.send('response-status-contigs', {
                         status: 'error',
